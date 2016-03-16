@@ -1,0 +1,236 @@
+<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+  
+	<!--
+	=================================================================================================================
+	Problem:
+	Error	1	
+	  'Pan': member names cannot be the same as their enclosing type	
+	obj\Debug\generated\src\Org.Achartengine.Tools.Pan.cs
+
+	Analysis
+	Pan class and PanListener
+
+	Analysis:
+
+		Class and Property have the same name
+
+	[Re]Solution/Workaround:
+
+		Rename Listener Property
+
+
+	NOTE:
+
+	managedName not name!!!!
+
+	if name then expect something like this:
+
+	obj/Debug/android/src/mono/org/achartengine/tools/PannedListenerImplementor.java(25,25): 
+	Error:  
+	error: cannot find symbol
+		org.achartengine.tools.PannedListener
+		symbol:   class PannedListener
+		location: package org.achartengine.tools
+
+	<attr
+		path="/api/package[@name='org.achartengine.tools']/interface[@name='PanListener']" 
+		name="managedName"
+		>
+		PannedListener
+	</attr>
+ 	-->
+	<attr
+		path="/api/package[@name='org.achartengine.tools']/class[@name='Pan']" 
+		name="managedName"
+		>
+		PanMotion
+	</attr>
+
+	<!---
+	obj/Debug/generated/src/AChartEngine.Tools.Pan.cs(29,29): 
+	Error CS0542: 
+		`AChartEngine.Tools.Pan.Pan': 
+	member names cannot be the same as their enclosing type
+
+	<attr
+		path="/api/package[@name='org.achartengine.tools']/interface[@name='PanListener']/method[@name='panApplied']" 
+		name="managedName"
+		>
+		Panned
+	</attr>
+	 -->
+
+	<!--
+	=================================================================================================================
+	-->
+
+	<!--
+	=================================================================================================================
+	2nd pass
+
+		8	errors
+
+
+	Problem:
+
+	obj/Debug/generated/src/AChartEngine.Renderers.XYSeriesRenderer.cs(10,10): 
+	Error CS0019: 
+	Operator `!=' cannot be applied to operands of type 
+		`AChartEngine.Renderers.XYSeriesRenderer.FillOutsideLine.Type' 
+	and 
+		`System.Type' 
+
+	Analysis:
+
+		Type nested class in class XYSeriesRenderer.FillOutsideLine, causes collisions with System.Type
+
+	[Re]Solution/Workaround:
+
+		Rename
+			XYSeriesRenderer.FillOutsideLine.Type
+		to
+			XYSeriesRenderer.FillOutsideLine.FillOutsideLineType
+
+	Result:
+		this transform solves other 7 errors
+	-->
+	<attr
+		path="/api/package[@name='org.achartengine.renderer']/class[@name='XYSeriesRenderer.FillOutsideLine.Type']"
+		name="managedName"
+		>
+		FillOutsideLineType
+	</attr>
+	<!--
+	Problem:
+
+	obj/Debug/generated/src/AChartEngine.Renderers.XYSeriesRenderer.cs(40,40): 
+	Error CS1502: 
+	The best overloaded method match for 
+		`Android.Runtime.JNIEnv.StartCreateInstance(System.IntPtr, System.IntPtr, Android.Runtime.JValue*)' 
+	has some invalid arguments 
+
+	Analysis:
+
+
+	[Re]Solution/Workaround:
+
+	-->
+
+	<!--
+	Problem:
+
+	obj/Debug/generated/src/AChartEngine.Renderers.XYSeriesRenderer.cs(61,61): 
+	Error CS1503: 
+	Argument `#1' cannot convert 
+		`AChartEngine.Renderers.XYSeriesRenderer.FillOutsideLine.Type' 
+	expression to type 
+		`System.IntPtr' 
+
+	Analysis:
+
+
+	[Re]Solution/Workaround:
+
+	-->
+
+	<!--
+	Problem:
+
+	obj/Debug/generated/src/AChartEngine.Renderers.XYSeriesRenderer.cs(11,11): 
+	Error CS0019: 
+	Operator `==' cannot be applied to operands of type 
+		`AChartEngine.Renderers.XYSeriesRenderer.FillOutsideLine.Type' 
+	and 
+		`System.Type'
+
+	Analysis:
+
+
+	[Re]Solution/Workaround:
+
+	-->
+
+	<!--
+	Problem:
+
+	obj/Debug/generated/src/AChartEngine.Renderers.XYSeriesRenderer.cs(11,11): 
+	Error CS0019: 
+	Operator `==' cannot be applied to operands of type 
+		`AChartEngine.Renderers.XYSeriesRenderer.FillOutsideLine.Type' 
+		and 
+		`System.Type'
+
+	Analysis:
+
+
+	[Re]Solution/Workaround:
+
+	-->
+
+	<!--
+	Problem:
+
+	obj/Debug/generated/src/AChartEngine.Renderers.XYSeriesRenderer.cs(10,10): 
+	Error CS0019: 
+	Operator `==' cannot be applied to operands of type 
+		`AChartEngine.Renderers.XYSeriesRenderer.FillOutsideLine.Type' 
+	and 
+		`System.Type'
+
+	Analysis:
+
+
+	[Re]Solution/Workaround:
+
+	-->
+
+
+	<!--
+	samples/Sample.AChartEngine.XamarinAndroid/chart/SalesComparisonChart.cs(12,12): 
+	Error CS1502: 
+	The best overloaded method match for 
+		`AChartEngine.Renderers.DefaultRenderer.SetTextTypeface(string, int)' 
+	has some invalid arguments 
+
+	Analysis:
+
+	In Xamarin.Android SetTextTypeface 2nd parameter is Android.Graphics.Typeface
+
+	[Re]Solution/Workaround:
+
+	1.	remove-node
+	2.	copy DefaultRendered to Additions/
+
+	-->
+	<remove-node
+		path="/api/package[@name='org.achartengine.renderer']/class[@name='DefaultRenderer']/method[@name='setTextTypeface' and count(parameter)=2 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int']]" 
+		>
+	</remove-node>
+
+	<!---
+	<attr
+		path="/api/package[@name='org.achartengine.renderer']/class[@name='BarChart.Type']" 
+		name="managedName"
+		>
+		BarChart.ChartType
+	</attr>
+	-->
+
+
+
+	<!--
+	Runtime errors:
+
+	1. BarChart.Type.Default - DEFAULT
+	2. cast error
+		mono.android.runtime.JavaObject cannot be cast to java.util.Map
+
+	-->
+</metadata>

@@ -1,0 +1,52 @@
+%YAML 1.2
+---
+name: AChartEngine 
+version: "0.0.0.1"
+id: achartengine
+publisher: HolisticWare LLC
+publisher-url: http://holisticware.net/
+license: ./License.md
+summary: Charting library for Android applications.
+details: ./Details.md
+getting-started: ./GettingStarted.md
+icons: 
+  - ./icons/icon_128x128.png
+  - ./icons/icon_512x512.png
+screenshots:
+  - ./screenshots/bar-chart-horizontal.png
+  - ./screenshots/bar-chart-vertical.png
+  - ./screenshots/bar-chart.png
+  - ./screenshots/chart-dot.png
+  - ./screenshots/chart-temperature-average-01.png
+  - ./screenshots/chart-temperature-average-02.png
+  - ./screenshots/chart-temperature-average-03.png
+  - ./screenshots/chart-temperature-ranges.png
+  - ./screenshots/chart-weather-data.png
+  - ./screenshots/chart-weight-gauge.png
+  - ./screenshots/line-chart-01.png
+  - ./screenshots/line-chart-02.png
+  - ./screenshots/line-chart-03.png
+  - ./screenshots/pie-chart-doughnut.png
+  - ./screenshots/point-chart-project-work-status.png
+  - ./screenshots/sales-difference.png
+  - ./screenshots/sales-growth-01.png
+  - ./screenshots/scatter-chart-01.png
+  - ./screenshots/trigonometric-functions.png
+
+build:
+  - ../source/AChartEngine.sln
+  - ../samples/AChartEngine.sln
+libraries: 
+  android: 
+    - ../source/AChartEngine.Bindings.XamarinAndroid/bin/Release/AChartEngine.Bindings.XamarinAndroid.dll
+#  ios: 
+#	- ../src//classic/AnyCPU/Release/Assembly.dll
+ # ios-unified: 
+#	- ../src//unified/AnyCPU/Release/Assembly.dll
+samples:
+  Android Sample: ../samples/AChartEngine.sln
+#  iOS Sample: 
+#	- ../samples/Sample-IOS.sln
+#  iOS Classic Sample: 
+#	- ../samples/Sample-IOS-Classic.sln
+ 
